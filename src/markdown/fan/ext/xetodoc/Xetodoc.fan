@@ -6,6 +6,8 @@
 //   01 Nov 2024  Matthew Giannini  Creation
 //
 
+using util
+
 **
 ** Xetodoc is a curated set of features and extensions to the CommonMark syntax.
 **
@@ -66,9 +68,9 @@
   }
 
   ** Convenience to render the given Xetodoc to HTML
-  static Str toHtml(Str source, LinkResolver? linkResolver := null)
+  static Str toHtml(Str source, LinkResolver? linkResolver := null, FileLoc? loc := null)
   {
-    htmlRenderer.render(parser(linkResolver).parse(source))
+    htmlRenderer.render(parser(linkResolver).parse(source).withFileLoc(loc))
   }
 
   ** Convenience to render the given node to HTML

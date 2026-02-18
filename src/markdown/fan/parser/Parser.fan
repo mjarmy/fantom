@@ -6,6 +6,8 @@
 //   08 Oct 2024  Matthew Giannini  Creation
 //
 
+using util
+
 **
 ** Parse input text into a tree of nodes.
 **
@@ -64,7 +66,7 @@ const class Parser
 
   ** Convenience to parse a file into a `Document`. If source span parsing
   ** is enabled the nodes will have access to the file location using `Node.loc`.
-  Document parseFile(File file) { parseStream(file.in).withFile(file) }
+  Document parseFile(File file) { parseStream(file.in).withFileLoc(FileLoc(file.pathStr)) }
 
   ** Convenience for 'parseStream(text.in)'
   Document parse(Str text) { parseStream(text.in) }

@@ -57,10 +57,10 @@ abstract class Node
   ** Get the file location for this node from the original parsed source.
   ** If the location is not known or source spans were not enabled during
   ** parsing, then return `util::FileLoc.unknown`.
-  FileLoc loc()
+  virtual FileLoc loc()
   {
     if (sourceSpans.isEmpty) return FileLoc.unknown
-    file := doc?.file?.name ?: "inputs"
+    file := doc?.locRef?.file ?: "inputs"
     span := sourceSpans.first
     // I think if the best way to report the location is using the first source span
     return FileLoc(file, span.lineIndex+1, span.columnIndex+1)

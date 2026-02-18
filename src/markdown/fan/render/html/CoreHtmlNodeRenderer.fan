@@ -129,7 +129,11 @@
 
   override Void visitHtmlBlock(HtmlBlock block)
   {
-    if (cx.disableHtml) return
+    if (cx.disableHtml)
+    {
+      echo("WARN: ignore block html ${block.loc}")
+      return
+    }
 
     html.line
     if (cx.escapeHtml)
@@ -228,7 +232,11 @@
 
   override Void visitHtmlInline(HtmlInline inline)
   {
-    if (cx.disableHtml) return
+    if (cx.disableHtml)
+    {
+      echo("WARN: ignore inline html ${inline.loc}: ${inline.literal}")
+      return
+    }
 
     if (cx.escapeHtml)
       html.text(inline.literal)
